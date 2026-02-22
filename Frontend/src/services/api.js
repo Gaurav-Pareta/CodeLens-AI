@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://codelens-backend-h6iw.onrender.com';
+const API_BASE_URL = 'https://codelens-backend.onrender.com/api/ai/get-review';
 
 export const reviewApi = {
   async getReview(code, language) {
