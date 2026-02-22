@@ -3,12 +3,17 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const ai = new GoogleGenAI({
-  apiKey: process.env.GOOGLE_GEMINI_KEY,
-});
+if (!process.env.GOOGLE_GEMINI_KEY) {
+  throw new Error("Missing GOOGLE_GEMINI_KEY");
+}
 
-// Add this after the ai initialization:
-const languageMap = {
+export function getAI() {
+  return new GoogleGenAI({
+    apiKey: process.env.GOOGLE_GEMINI_KEY,
+  });
+}
+
+export const languageMap = {
   javascript: { name: "JavaScript", prismLang: "javascript" },
   python: { name: "Python", prismLang: "python" },
   java: { name: "Java", prismLang: "java" },
