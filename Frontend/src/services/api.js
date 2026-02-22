@@ -1,17 +1,19 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_BASE_URL = 'https://codelens-backend.onrender.com/api/ai/get-review';
+const API_BASE_URL = "https://codelens-backend.onrender.com/api";
 
 export const reviewApi = {
   async getReview(code, language) {
     try {
-      const response = await axios.post(`${API_BASE_URL}/ai/get-review`, {
-        code,
-        language
-      });
+      const response = await axios.post(
+        `${API_BASE_URL}/ai/get-review`,
+        { code, language }
+      );
       return response.data.review;
     } catch (error) {
-      throw new Error(error.response?.data?.message || 'Failed to get review');
+      throw new Error(
+        error.response?.data?.message || "Failed to get review"
+      );
     }
-  }
+  },
 };
